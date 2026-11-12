@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "value": "AzureDevopsneha"
+        },
+        "devopsls1_password": {
+            "value": ""
+        },
+        "ls_azuresql_password": {
+            "value": ""
+        },
+        "storagels1_accountKey": {
+            "value": ""
+        },
+        "HttpServer1_properties_typeProperties_url": {
+            "value": "https://raw.githubusercontent.com/"
+        },
+        "devopsls1_properties_typeProperties_host": {
+            "value": "C:\\Users\\pavan\\Downloads\\azuredevopsproject1"
+        },
+        "devopsls1_properties_typeProperties_userId": {
+            "value": "pavan\\pavan"
+        },
+        "ls1_github_properties_typeProperties_url": {
+            "value": "https://raw.githubusercontent.com/"
+        },
+        "ls_azuresql_properties_typeProperties_server": {
+            "value": "deprojectsneha.database.windows.net"
+        },
+        "ls_azuresql_properties_typeProperties_database": {
+            "value": "deprojectneha"
+        },
+        "ls_azuresql_properties_typeProperties_userName": {
+            "value": "adminneha"
+        },
+        "ls_github_properties_typeProperties_url": {
+            "value": "https://raw.githubusercontent.com/"
+        },
+        "storagels1_properties_typeProperties_url": {
+            "value": "https://azurestorageneha.dfs.core.windows.net/"
+        },
+        "integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+            "value": "/subscriptions/472f4e18-4d5a-44e4-b7d9-d40a271517e2/resourcegroups/practice1/providers/Microsoft.DataFactory/factories/tdppracticeadf/integrationruntimes/integrationRuntime1"
+        },
+        "containerUri": {
+            "value": ""
+        },
+        "containerSasToken": {
+            "value": ""
+        }
+    }
+}

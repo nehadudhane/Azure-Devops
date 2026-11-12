@@ -1,0 +1,153 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "AzureDevopsneha"
+        },
+        "devopsls1_password": {
+            "type": "secureString",
+            "metadata": "Secure string for 'password' of 'devopsls1'"
+        },
+        "ls_azuresql_password": {
+            "type": "secureString",
+            "metadata": "Secure string for 'password' of 'ls_azuresql'"
+        },
+        "storagels1_accountKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'accountKey' of 'storagels1'"
+        },
+        "HttpServer1_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://raw.githubusercontent.com/"
+        },
+        "devopsls1_properties_typeProperties_host": {
+            "type": "string",
+            "defaultValue": "C:\\Users\\pavan\\Downloads\\azuredevopsproject1"
+        },
+        "devopsls1_properties_typeProperties_userId": {
+            "type": "string",
+            "defaultValue": "pavan\\pavan"
+        },
+        "ls1_github_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://raw.githubusercontent.com/"
+        },
+        "ls_azuresql_properties_typeProperties_server": {
+            "type": "string",
+            "defaultValue": "deprojectsneha.database.windows.net"
+        },
+        "ls_azuresql_properties_typeProperties_database": {
+            "type": "string",
+            "defaultValue": "deprojectneha"
+        },
+        "ls_azuresql_properties_typeProperties_userName": {
+            "type": "string",
+            "defaultValue": "adminneha"
+        },
+        "ls_github_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://raw.githubusercontent.com/"
+        },
+        "storagels1_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://azurestorageneha.dfs.core.windows.net/"
+        },
+        "integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+            "type": "string",
+            "defaultValue": "/subscriptions/472f4e18-4d5a-44e4-b7d9-d40a271517e2/resourcegroups/practice1/providers/Microsoft.DataFactory/factories/tdppracticeadf/integrationruntimes/integrationRuntime1"
+        },
+        "containerUri": {
+            "type": "string",
+            "metadata": "URI to storage account containing linked ARM templates"
+        },
+        "containerSasToken": {
+            "type": "string",
+            "metadata": "Sas token to storage account containing linked ARM templates"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "AzureDevopsneha_ArmTemplate_0",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2024-03-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    },
+                    "ls_azuresql_password": {
+                        "value": "[parameters('ls_azuresql_password')]"
+                    },
+                    "storagels1_accountKey": {
+                        "value": "[parameters('storagels1_accountKey')]"
+                    },
+                    "devopsls1_password": {
+                        "value": "[parameters('devopsls1_password')]"
+                    },
+                    "HttpServer1_properties_typeProperties_url": {
+                        "value": "[parameters('HttpServer1_properties_typeProperties_url')]"
+                    },
+                    "ls1_github_properties_typeProperties_url": {
+                        "value": "[parameters('ls1_github_properties_typeProperties_url')]"
+                    },
+                    "ls_azuresql_properties_typeProperties_server": {
+                        "value": "[parameters('ls_azuresql_properties_typeProperties_server')]"
+                    },
+                    "ls_azuresql_properties_typeProperties_database": {
+                        "value": "[parameters('ls_azuresql_properties_typeProperties_database')]"
+                    },
+                    "ls_azuresql_properties_typeProperties_userName": {
+                        "value": "[parameters('ls_azuresql_properties_typeProperties_userName')]"
+                    },
+                    "ls_github_properties_typeProperties_url": {
+                        "value": "[parameters('ls_github_properties_typeProperties_url')]"
+                    },
+                    "storagels1_properties_typeProperties_url": {
+                        "value": "[parameters('storagels1_properties_typeProperties_url')]"
+                    },
+                    "integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+                        "value": "[parameters('integrationRuntime1_properties_typeProperties_linkedInfo_resourceId')]"
+                    },
+                    "devopsls1_properties_typeProperties_host": {
+                        "value": "[parameters('devopsls1_properties_typeProperties_host')]"
+                    },
+                    "devopsls1_properties_typeProperties_userId": {
+                        "value": "[parameters('devopsls1_properties_typeProperties_userId')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "AzureDevopsneha_ArmTemplate_1",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2024-03-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/deployments', 'AzureDevopsneha_ArmTemplate_0')]"
+            ]
+        }
+    ]
+}

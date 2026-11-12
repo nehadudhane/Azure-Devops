@@ -2,16 +2,16 @@
 
 ## Overview
 
-Azure Resource Manager (ARM) exports documenting an **Azure Data Factory (ADF)** project, including data ingestion, orchestration, mapping data flows, datasets, linked services, and an integration runtime.
+This repository contains Azure Resource Manager (ARM) exports for an Azure Data Factory (ADF) project, including pipelines, datasets, linked services, an integration runtime, and mapping data flows. It documents data ingestion, transformation, and serving configurations as defined in the exported templates.
 
-## Technology Stack
+## Technology and resources
 
-- Azure Data Factory
-- ADF Mapping Data Flows
-- Azure SQL, storage, HTTP and GitHub connections represented in the exported configurations
-- Azure Resource Manager (ARM) JSON templates
+- **Azure Data Factory** — workflow orchestration and pipeline definitions
+- **ADF Mapping Data Flows** — transformation and serving definitions
+- **Azure SQL / storage / HTTP / GitHub sources** — connections represented by linked services and datasets
+- **ARM templates** — exported deployment configuration
 
-## Components in the Export
+## Components in the exports
 
 The complete `ARMTemplateForFactory.json` defines:
 
@@ -25,33 +25,14 @@ The complete `ARMTemplateForFactory.json` defines:
 
 **Pipelines:** `API_ingestion`, `GoldLayer`, `Parentpipeline`, `SQLtoDatalake`, `new_pipeline`, `onprem_ingestion`, and `silverpipeline`.
 
-**Mapping data flows:** `DataTransformation` and `dataserving`.
+**Data flows:** `DataTransformation` and `dataserving`.
 
-The listed names and counts describe configured resources; they are not a claim about execution results or volume processed.
+These names are taken from the exported artifacts. They do not by themselves establish end-to-end execution results or data volumes.
 
-## Architecture at a Glance
-
-```text
-Source systems / API / Azure SQL / storage
-                    |
-                    v
-          Azure Data Factory
-      Pipelines and linked services
-                    |
-                    v
-          Mapping data flows
-      DataTransformation / dataserving
-                    |
-                    v
-         Configured data sinks
-```
-
-The detailed sources and destinations are defined in the ARM exports.
-
-## Repository Structure
+## Repository structure
 
 ```text
-Azure-Devops/
+azuredevops/
 ├── README.md
 ├── ARMTemplateForFactory.json
 ├── ARMTemplateParametersForFactory.json
@@ -65,13 +46,11 @@ Azure-Devops/
     └── ArmTemplateParameters_master.json
 ```
 
-The root ARM template and the linked templates are alternative exports of overlapping resources; they do not represent independent sets of pipelines.
+The root ARM template is a full export. The linked templates represent an alternative split deployment structure; they overlap with the root export and should not be interpreted as additional independent pipelines.
 
-## Security and Deployment Notes
+## Security and portability
 
-These are environment-specific ARM exports. The **public-sharing versions** of two templates replace an exposed signed HTTP-trigger URL signature with `REDACTED_FOR_PUBLIC_REPOSITORY`. All other configuration content in those files is preserved.
-
-The exports may include environment identifiers and endpoint names. Do not publish live credentials, and configure all required secrets and environment values securely before deployment. Redacted templates are for portfolio documentation, not direct deployment as-is.
+These are **environment-specific exports**. Before making this repository public, review linked-service endpoints, workspace/resource identifiers, account and server names, and any credential parameters or stored values. Supply secrets securely when deploying to another environment. The files are based on the original exports. For safe public sharing, the signed HTTP-trigger URL signature in two ARM JSON files has been replaced with `REDACTED_FOR_PUBLIC_REPOSITORY`. All other original configuration content is preserved. These templates are for documentation and will require valid credentials and environment settings for deployment.
 
 ## Author
 
