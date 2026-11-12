@@ -31,19 +31,19 @@ These names are taken from the exported artifacts. They do not by themselves est
 
 ## Repository structure
 
+All ARM export files are currently stored at the repository root:
+
 ```text
-azuredevops/
+Azure-Devops/
 ├── README.md
 ├── ARMTemplateForFactory.json
 ├── ARMTemplateParametersForFactory.json
-├── factory/
-│   ├── AzureDevopsneha_ARMTemplateForFactory.json
-│   └── AzureDevopsneha_ARMTemplateParametersForFactory.json
-└── linkedTemplates/
-    ├── ArmTemplate_0.json
-    ├── ArmTemplate_1.json
-    ├── ArmTemplate_master.json
-    └── ArmTemplateParameters_master.json
+├── AzureDevopsneha_ARMTemplateForFactory.json
+├── AzureDevopsneha_ARMTemplateParametersForFactory.json
+├── ArmTemplate_0.json
+├── ArmTemplate_1.json
+├── ArmTemplate_master.json
+└── ArmTemplateParameters_master.json
 ```
 
 The root ARM template is a full export. The linked templates represent an alternative split deployment structure; they overlap with the root export and should not be interpreted as additional independent pipelines.
